@@ -6,18 +6,20 @@ const AddWorkout = props => (
     <form class="form" id='addworkout' onSubmit={e => {
       e.preventDefault();
       props.handleSubmit({
-        timestamp: document.querySelector('#date').value,
+        date: document.querySelector('#date').value,
         workout: document.querySelector('#workout').value,
         weight: document.querySelector('#weight').value,
         reps: document.querySelector('#reps').value,
         notes: document.querySelector('#notes').value,
       });
-      // document.querySelector('input').value = '';
+      document.querySelector('#weight').value = '';
+      document.querySelector('#reps').value = '';
+      document.querySelector('#notes').value = '';
     }}>
       <div>
         {/* <label for="date">Date: </label> */}
         <input type="date" id="date" name="date"
-          value={new Date().toLocaleDateString("sv")}
+          // value={new Date().toLocaleDateString("sv")}
            />
       </div>
 

@@ -1,20 +1,22 @@
 const fs = require('fs');
 const path = require('path');
-const db = require('./workoutModels');
 
 const controller = {};
 
 controller.getWorkouts = (req, res, next) => {
-  const stringSQL = 'SELECT * FROM workouts ORDER BY date DESC';
-  db.query(stringSQL)
-    .then(data => {
-      res.locals.workouts = data.rows;
+  fs.readFile(path.resolve(__dirname, './db/workouts.json'),
+    (err, data) => {
+      if (err) {
+        return next({
+          log: `controller.getWorkouts: ERROR: ${err}`,
+          message: { err: 'Error occurred in controller.getWorkouts. Check server logs for more details.' },
+        });
+      }
+      const parsedData = JSON.parse(data);
+      res.locals.workouts = parsedData;
       return next();
-    })
-    .catch(err => next({
-      log: `controller.getWorkouts: ERROR: ${err}`,
-      message: { err: 'Error occurred in controller.getWorkouts. Check server logs for more details.' },
-    }));
+    },
+  );
 };
 
 controller.addWorkout = (req, res, next) => {

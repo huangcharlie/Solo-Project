@@ -19,6 +19,7 @@ class App extends Component {
   }
   
   componentDidMount() {
+    document.querySelector('#date').value = new Date().toLocaleDateString("sv");
     fetch('/workout')
       .then(res => res.json())
       .then(data => {
@@ -48,7 +49,7 @@ class App extends Component {
   }
 
   getWorkoutByType(workout) {
-    const type = this.state.workouts.filter(el => el.workout === workout).reverse();
+    const type = this.state.workouts.filter(el => el.workout === workout);
     return this.setState({
       ...this.state,
       type,
