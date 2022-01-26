@@ -4,10 +4,22 @@ body {
 }
 
 h1 {
-  color: red;
+  color: mediumpurple;
+  text-align: center;
+  font-size: 50px;
 }
 
-#addworkout {
+h2 {
+  color: crimson;
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#addworkout, #getworkout {
   width: 160px;
   /* background-color: green; */
   display: flex;
@@ -17,13 +29,13 @@ h1 {
   padding: 20px;
 }
 
-#addworkout button {
+#addworkout button, #getworkout button {
   margin-top: 10px;
   width: 80%;
   align-self: center;
 }
 
-#addworkout div {
+#addworkout div, #getworkout div {
   margin: 5px 0;
   display: flex;
   justify-content: space-between;
@@ -31,6 +43,10 @@ h1 {
 
 #addworkout input {
   width: 80px;
+}
+
+#addworkout div:first-child input {
+  width: initial;
 }
 
 label {

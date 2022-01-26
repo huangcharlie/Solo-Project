@@ -9,19 +9,6 @@ const controller = require('./controller');
 app.use(express.json()); // adds body prop on req object so middleware can access it
 app.use(express.urlencoded({ extended: true }));
 
-// uncomment the below for proxy challenge
-
-// const leaderList = [
-//   {name: 'Anna', id: 'a0'},
-//   {name: 'Ben', id: 'b0'},
-//   {name: 'Clara', id: 'c0'},
-//   {name: 'David', id: 'd0'},
-// ];
-
-// app.get('/api/leaders', (req, res) => {
-//   return res.status(200).send(leaderList);
-// });
-
 app.get('/workout', controller.getWorkouts, (req, res) => {
   return res.status(200).json(res.locals.workouts);
 })

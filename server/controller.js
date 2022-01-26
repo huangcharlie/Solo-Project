@@ -27,10 +27,10 @@ controller.addWorkout = (req, res, next) => {
     });
   }
   
-  const { workout, weight, reps, notes } = req.body;
+  const { date, workout, weight, reps, notes } = req.body;
   const data = res.locals.workouts;
-  const timestamp = new Date().toLocaleDateString("en-US", {timeZone: "America/Los_Angeles"});
-  data.push({ workout, weight, reps, notes, timestamp });
+//   const timestamp = new Date().toLocaleDateString("en-US", {timeZone: "America/Los_Angeles"});
+  data.push({ workout, weight, reps, notes, timestamp: date });
   res.locals.workouts = data;
   const jsonData = JSON.stringify(data);
 
