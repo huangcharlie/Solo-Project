@@ -49,6 +49,11 @@ h2 {
   width: initial;
 }
 
+#getworkoutdate div {
+  display: flex;
+  flex-direction: column;
+}
+
 label {
   font-weight: bold;
 }
@@ -63,3 +68,7 @@ label {
   border: 1px solid black;
   border-radius: 3px;
 }
+
+/* #dateFilterResults {
+  display: flex;
+} */

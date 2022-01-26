@@ -17,6 +17,10 @@ app.post('/workout', controller.addWorkout, controller.getWorkouts, (req, res) =
   return res.status(200).json(res.locals.workouts);
 })
 
+app.post('/filterworkout', controller.filtertWorkouts, (req, res) => {
+  return res.status(200).json(res.locals.workouts);
+})
+
 if(process.env.NODE_ENV === 'production') {
   // statically serve everything in the build folder on the route '/build'
   app.use('/dist', express.static(path.resolve(__dirname, '../dist')));

@@ -22,7 +22,8 @@ module.exports = {
       directory: path.resolve(__dirname, 'dist'),
     },
     proxy: {
-      '/workout': 'http://localhost:3000'
+      '/workout': 'http://localhost:3000',
+      '/filterworkout': 'http://localhost:3000'
     },
     hot: true,
   },

@@ -14,7 +14,7 @@ const GetWorkoutByType = props => {
   return(
     <div >
       <h2>Workout By Type</h2>
-      <form class="form" id='getworkout' onSubmit={e => {
+      <form className="form" id='getworkout' onSubmit={e => {
         e.preventDefault();
         props.handleSubmit(document.querySelector('#workout2').value);
       }}>

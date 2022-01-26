@@ -3,9 +3,9 @@ import React from 'react';
 const PriorWorkout = props => {
   const workouts = props.workouts.map((el, i) => 
     <div className='workoutResult' key={i}>
-      <b>Date: </b> {el.date.split('T')[0]}<br></br>
-      <b>Workout: </b> {el.workout}<br></br>
-      <b>Weight: </b> {el.weight} lbs<br></br>
+      <b>Date: </b>{el.date.split('T')[0]}<br></br>
+      <b>Workout: </b>{el.workout}<br></br>
+      <b>Weight: </b>{el.weight} lbs<br></br>
       <b>Reps: </b>{el.reps}<br></br>
       <b>Notes: </b>{el.notes}
     </div>

@@ -3,7 +3,7 @@ const db = require('./workoutModels');
 const controller = {};
 
 controller.getWorkouts = (req, res, next) => {
-  const stringSQL = 'SELECT * FROM workouts ORDER BY date DESC, _id DESC';
+  const stringSQL = 'SELECT * FROM workouts ORDER BY date DESC, workout, _id DESC';
   db.query(stringSQL)
     .then(data => {
     //   console.log(data);
@@ -30,33 +30,24 @@ controller.addWorkout = (req, res, next) => {
       log: `controller.addWorkout: ERROR: ${err}`,
       message: { err: 'Error occurred in controller.addWorkout. Check server logs for more details.' },
     }));
-  
-//     if(!('workouts' in res.locals) || typeof res.locals.workouts !== 'object') {
-//     return next({
-//       log: 'controller.addWorkout: ERROR: Invalid or unfound required data on res.locals object - Expected res.locals.workouts to be an object.',
-//       message: { err: 'controller.addWorkout: ERROR: Check server logs for details' },
-//     });
-//   }
-  
-//   const { date, workout, weight, reps, notes } = req.body;
-//   const data = res.locals.workouts;
-// //   const timestamp = new Date().toLocaleDateString("en-US", {timeZone: "America/Los_Angeles"});
-//   data.push({ workout, weight, reps, notes, date });
-//   res.locals.workouts = data;
-//   const jsonData = JSON.stringify(data);
-
-//   fs.writeFile(path.resolve(__dirname, './db/workouts.json'), jsonData,
-//     (err) => {
-//       if (err) {
-//         return next({
-//           log: `controller.addWorkout: ERROR: ${err}`,
-//           message: { err: 'controller.addWorkout: ERROR: Check server logs for details' },
-//         });
-//       }
-//       return next();
-//     },
-//   );
 };
+
+controller.filtertWorkouts = (req, res, next) => {
+    const startdate = req.body.startdate || '2022-01-01';
+    const enddate = req.body.enddate || new Date().toLocaleDateString("sv");
+    params = [ startdate, enddate ];
+    const stringSQL = 'SELECT * FROM workouts WHERE date BETWEEN $1 AND $2 ORDER BY date, workout;';
+    db.query(stringSQL, params)
+      .then(data => {
+      //   console.log(data);
+        res.locals.workouts = data.rows;
+        return next();
+      })
+      .catch(err => next({
+        log: `controller.filtertWorkouts: ERROR: ${err}`,
+        message: { err: 'Error occurred in controller.filtertWorkouts. Check server logs for more details.' },
+      }));
+  };
 
 // ADD MIDDLEWARE TO REMOVE A CHARACTER FROM FAVORITES HERE
 // controller.removeFav = (req, res, next) => {

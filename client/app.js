@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import AddWorkout from './AddWorkout';
-import PriorWorkout from './PriorWorkout';
-import GetWorkoutByType from './GetWorkoutByType';
-import GetWorkoutByDate from './GetWorkoutByDate';
+import AddWorkout from './components/AddWorkout';
+import PriorWorkout from './components/PriorWorkout';
+import GetWorkoutByType from './components/GetWorkoutByType';
+import GetWorkoutByDate from './components/GetWorkoutByDate';
 import styles from './style.css';
 
 class App extends Component {
@@ -23,12 +23,12 @@ class App extends Component {
   
   componentDidMount() {
     document.querySelector('#date').value = new Date().toLocaleDateString("sv");
-    document.querySelector('#date2').value = new Date().toLocaleDateString("sv");
+    document.querySelector('#enddate').value = new Date().toLocaleDateString("sv");
     fetch('/workout')
       .then(res => res.json())
-      .then(data => {
+      .then(workouts => {
         return this.setState({
-          workouts: data
+          workouts
         });
       })
       .catch(err => console.log('App.componentDidMount: getPriorWorkout: ERROR: ', err));
@@ -43,10 +43,10 @@ class App extends Component {
       body: JSON.stringify(data),
     })
       .then(res => res.json())
-      .then(data => {
+      .then(workouts => {
         return this.setState({
           ...this.state,
-          workouts: data
+          workouts
         });
       })
       .catch(err => console.log('addWorkout: ERROR: ', err));
@@ -60,22 +60,39 @@ class App extends Component {
     })
   }
 
-  getWorkoutByDate(day) {
-    console.log(this.state.workouts);
-    const date = this.state.workouts.filter(el => el.date.split('T')[0] === day);
-    return this.setState({
-      ...this.state,
-      date,
-    })
+  getWorkoutByDate(startdate, enddate) {
+    fetch('/filterworkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ startdate, enddate }),
+      })
+      .then(res => res.json())
+      .then(date => {
+        return this.setState({
+          ...this.state,
+          date
+        });
+      })
+      .catch(err => console.log('getWorkoutByDate: ERROR: ', err));
+    
+    // const date = this.state.workouts.filter(el => el.date.split('T')[0] === startdate);
+    // return this.setState({
+    //   ...this.state,
+    //   date,
+    // })
   }
 
   render() {
     return (
       <div id="container">
-        <AddWorkout handleSubmit={this.addWorkout}/>
+          <div>
+            <AddWorkout handleSubmit={this.addWorkout}/>
+            <PriorWorkout workouts={this.state.workouts}/>
+          </div>
         <GetWorkoutByType handleSubmit={this.getWorkoutByType} type={this.state.type}/>
         <GetWorkoutByDate handleSubmit={this.getWorkoutByDate} date={this.state.date}/>
-        <PriorWorkout workouts={this.state.workouts}/>
       </div>
     );
   }

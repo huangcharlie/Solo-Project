@@ -3,7 +3,7 @@ import React from 'react';
 const AddWorkout = props => (
   <div >
     <h2>Add Workout</h2>
-    <form class="form" id='addworkout' onSubmit={e => {
+    <form className="form" id='addworkout' onSubmit={e => {
       e.preventDefault();
       props.handleSubmit({
         date: document.querySelector('#date').value,
