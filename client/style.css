@@ -19,7 +19,7 @@ h2 {
   justify-content: space-evenly;
 }
 
-#addworkout, #getworkout {
+.form {
   width: 160px;
   /* background-color: green; */
   display: flex;
@@ -29,13 +29,13 @@ h2 {
   padding: 20px;
 }
 
-#addworkout button, #getworkout button {
+.form button {
   margin-top: 10px;
   width: 80%;
   align-self: center;
 }
 
-#addworkout div, #getworkout div {
+.form div {
   margin: 5px 0;
   display: flex;
   justify-content: space-between;
@@ -53,6 +53,13 @@ label {
   font-weight: bold;
 }
 
-li {
+.resultsContainer {
+  /* background-color: green; */
+}
+
+.workoutResult {
   margin: 10px 0;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
 }

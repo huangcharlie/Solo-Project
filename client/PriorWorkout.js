@@ -2,19 +2,21 @@ import React from 'react';
 
 const PriorWorkout = props => {
   const workouts = props.workouts.map((el, i) => 
-    <li key={i}><b>Date: </b> {el.date}<br></br>
+    <div className='workoutResult' key={i}>
+      <b>Date: </b> {el.date.split('T')[0]}<br></br>
       <b>Workout: </b> {el.workout}<br></br>
       <b>Weight: </b> {el.weight} lbs<br></br>
       <b>Reps: </b>{el.reps}<br></br>
-      <b>Notes: </b>{el.notes}</li>
+      <b>Notes: </b>{el.notes}
+    </div>
   );
 
   return(
     <div >
       <h2>Prior 5 Workouts</h2>
-      <ul>
+      <div className='resultsContainer'>
         {workouts.slice(0, 5)}
-      </ul>
+      </div>
     </div>
   );
 };

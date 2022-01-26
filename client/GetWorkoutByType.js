@@ -2,11 +2,13 @@ import React from 'react';
 
 const GetWorkoutByType = props => {
   const workouts = props.type.map((el, i) => 
-    <li key={i}><b>Date: </b> {el.date}<br></br>
-      <b>Workout: </b> {el.workout}<br></br>
+    <div className='workoutResult' key={i}>
+      <b>Date: </b> {el.date.split('T')[0]}<br></br>
+      {/* <b>Workout: </b> {el.workout}<br></br> */}
       <b>Weight: </b> {el.weight} lbs<br></br>
       <b>Reps: </b>{el.reps}<br></br>
-      <b>Notes: </b>{el.notes}</li>
+      <b>Notes: </b>{el.notes}
+    </div>
   );
 
   return(
@@ -27,9 +29,9 @@ const GetWorkoutByType = props => {
 
         <button type="submit" value="submit">Submit</button>
       </form>
-      <ul>
+      <div className='resultsContainer'>
         {workouts}
-      </ul>
+      </div>
     </div>
   );
 };

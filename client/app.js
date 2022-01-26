@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import AddWorkout from './AddWorkout';
 import PriorWorkout from './PriorWorkout';
 import GetWorkoutByType from './GetWorkoutByType';
+import GetWorkoutByDate from './GetWorkoutByDate';
 import styles from './style.css';
 
 class App extends Component {
@@ -11,20 +12,23 @@ class App extends Component {
 
     this.state = {
       workouts: [],
-      type: []
+      type: [],
+      date: []
     };
 
     this.addWorkout = this.addWorkout.bind(this);
     this.getWorkoutByType = this.getWorkoutByType.bind(this);
+    this.getWorkoutByDate = this.getWorkoutByDate.bind(this);
   }
   
   componentDidMount() {
     document.querySelector('#date').value = new Date().toLocaleDateString("sv");
+    document.querySelector('#date2').value = new Date().toLocaleDateString("sv");
     fetch('/workout')
       .then(res => res.json())
       .then(data => {
         return this.setState({
-          workouts: data.reverse()
+          workouts: data
         });
       })
       .catch(err => console.log('App.componentDidMount: getPriorWorkout: ERROR: ', err));
@@ -42,7 +46,7 @@ class App extends Component {
       .then(data => {
         return this.setState({
           ...this.state,
-          workouts: data.reverse()
+          workouts: data
         });
       })
       .catch(err => console.log('addWorkout: ERROR: ', err));
@@ -56,11 +60,21 @@ class App extends Component {
     })
   }
 
+  getWorkoutByDate(day) {
+    console.log(this.state.workouts);
+    const date = this.state.workouts.filter(el => el.date.split('T')[0] === day);
+    return this.setState({
+      ...this.state,
+      date,
+    })
+  }
+
   render() {
     return (
       <div id="container">
         <AddWorkout handleSubmit={this.addWorkout}/>
         <GetWorkoutByType handleSubmit={this.getWorkoutByType} type={this.state.type}/>
+        <GetWorkoutByDate handleSubmit={this.getWorkoutByDate} date={this.state.date}/>
         <PriorWorkout workouts={this.state.workouts}/>
       </div>
     );

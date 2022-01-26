@@ -13,7 +13,7 @@ app.get('/workout', controller.getWorkouts, (req, res) => {
   return res.status(200).json(res.locals.workouts);
 })
 
-app.post('/workout', controller.getWorkouts, controller.addWorkout, (req, res) => {
+app.post('/workout', controller.addWorkout, controller.getWorkouts, (req, res) => {
   return res.status(200).json(res.locals.workouts);
 })
 
