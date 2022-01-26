@@ -1,0 +1,42 @@
+body {
+  background-color: aliceblue;
+  margin-left: 20px;
+}
+
+h1 {
+  color: red;
+}
+
+#addworkout {
+  width: 160px;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 20px;
+}
+
+#addworkout button {
+  margin-top: 10px;
+  width: 80%;
+  align-self: center;
+}
+
+#addworkout div {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+#addworkout input {
+  width: 80px;
+}
+
+label {
+  font-weight: bold;
+}
+
+li {
+  margin: 10px 0;
+}
