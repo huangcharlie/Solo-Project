@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import AddWorkout from './components/AddWorkout';
 import PriorWorkout from './components/PriorWorkout';
 import GetWorkoutByType from './components/GetWorkoutByType';
@@ -128,4 +127,4 @@ class App extends Component {
   }
 }
 
-render(<App />, document.querySelector('#root'));
+export default App;
