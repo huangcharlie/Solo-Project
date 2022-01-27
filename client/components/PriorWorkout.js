@@ -1,25 +1,23 @@
 import React from 'react';
+import UpdateButton from './UpdateButton';
 
 const PriorWorkout = props => {
-  const workouts = props.workouts.map((el, i) => 
-    <div className='workoutResult' key={i}>
-      <b>Date: </b>{el.date.split('T')[0]}<br></br>
-      <b>Workout: </b>{el.workout}<br></br>
-      <b>Weight: </b>{el.weight} lbs<br></br>
-      <b>Reps: </b>{el.reps}<br></br>
-      <b>Notes: </b>{el.notes}<br></br>
-      <button className='deleteButton' onClick={() => props.handleClick(el._id)}>Delete</button>
-      <button className='updateButton' onClick={() => {
-        document.querySelector('#updateid').value = el._id,
-        document.querySelector('#date3').value = el.date.split('T')[0],
-        document.querySelector('#workout3').value = el.workout,
-        document.querySelector('#weight3').value = el.weight,
-        document.querySelector('#reps3').value = el.reps,
-        document.querySelector('#notes3').value = el.notes,
-        document.querySelector('#updateformcontainer').style.display = 'block'
-      }}>Update</button>
-    </div>
-  );
+  const workouts = props.workouts.map((el, i) => {
+    const { _id, date, workout, weight, reps, notes } = el
+    const props = { _id, date, workout, weight, reps, notes }
+    return(
+      <div className='workoutResult' key={i}>
+        <b>Date: </b>{date.split('T')[0]}<br></br>
+        <b>Workout: </b>{workout}<br></br>
+        <b>Weight: </b>{weight} lbs<br></br>
+        <b>Reps: </b>{reps}<br></br>
+        <b>Notes: </b>{notes}<br></br>
+        <button className='deleteButton' onClick={() => props.handleClick(_id)}>Delete</button>
+        {/* <UpdateButton _id={_id} date={date} workout={workout} weight={weight} reps={reps} notes={notes} /> */}
+        <UpdateButton {...props} />
+      </div>
+    )
+  });
 
   return(
     <div className='innercontainer'>

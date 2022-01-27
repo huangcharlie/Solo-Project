@@ -4,7 +4,6 @@ import PriorWorkout from './components/PriorWorkout';
 import GetWorkoutByType from './components/GetWorkoutByType';
 import GetWorkoutByDate from './components/GetWorkoutByDate';
 import UpdateWorkout from './components/UpdateWorkout';
-import styles from './style.css';
 
 class App extends Component {
   constructor(props) {

@@ -1,16 +1,22 @@
 import React from 'react';
+import UpdateButton from './UpdateButton';
 
 const GetWorkoutByDate = props => {
-  const workouts = props.date.map((el, i) => 
-    <div className='workoutResult' key={i}>
-      <b>Date: </b> {el.date.split('T')[0]}<br></br>
-      <b>Workout: </b> {el.workout}<br></br>
-      <b>Weight: </b> {el.weight} lbs<br></br>
-      <b>Reps: </b>{el.reps}<br></br>
-      <b>Notes: </b>{el.notes}<br></br>
-      <button className='deleteButton' onClick={() => props.handleClick(el._id)}>Delete</button>
-    </div>
-  );
+  const workouts = props.date.map((el, i) => {
+    const { _id, date, workout, weight, reps, notes } = el
+    const props = { _id, date, workout, weight, reps, notes }
+    return(
+      <div className='workoutResult' key={i}>
+        <b>Date: </b>{date.split('T')[0]}<br></br>
+        <b>Workout: </b>{workout}<br></br>
+        <b>Weight: </b>{weight} lbs<br></br>
+        <b>Reps: </b>{reps}<br></br>
+        <b>Notes: </b>{notes}<br></br>
+        <button className='deleteButton' onClick={() => props.handleClick(_id)}>Delete</button>
+        <UpdateButton {...props} />
+      </div>
+    )
+  });
 
   return(
     <div className='innercontainer'>

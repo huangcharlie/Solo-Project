@@ -35,7 +35,8 @@ const UpdateWorkout = props => (
 
       <button className='submitButton' onClick={(e) => {
         e.preventDefault();
-        document.querySelector('#updateformcontainer').style.display='none';
+        document.querySelector('#updateformcontainer').style.animation='fadeout 500ms linear';
+        setTimeout(() => document.querySelector('#updateformcontainer').style.display='none', 500);
         props.handleClick({
           _id: document.querySelector('#updateid').value,
           date: document.querySelector('#date3').value,
@@ -48,7 +49,8 @@ const UpdateWorkout = props => (
 
       <button className='cancelButton' onClick={(e) => {
         e.preventDefault();
-        document.querySelector('#updateformcontainer').style.display='none'
+        document.querySelector('#updateformcontainer').style.animation='fadeout 500ms linear';
+        setTimeout(() => document.querySelector('#updateformcontainer').style.display='none', 500);
       }}>Cancel</button>
 
     </form>

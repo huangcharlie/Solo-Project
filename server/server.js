@@ -6,9 +6,11 @@ const PORT = 3000;
 
 const controller = require('./controller');
 
+// handle parsing request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// app route handlers
 app.get('/workout', controller.getWorkouts, (req, res) => {
   return res.status(200).json(res.locals.workouts);
 })
@@ -30,16 +32,18 @@ app.post('/filterworkout', controller.filtertWorkouts, (req, res) => {
 })
 
 if(process.env.NODE_ENV === 'production') {
-  // statically serve everything in the build folder on the route '/build'
+  // statically serve everything in the dist folder on the route '/dist'
   app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
-  // serve index.html on the route '/'
+  // serve main app index.html on the route '/'
   app.get('/', (req, res) => {
     return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
   });
 }
 
+// catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));
 
+// express global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',

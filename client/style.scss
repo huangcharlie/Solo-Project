@@ -1,0 +1,170 @@
+body {
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  width: 80%;
+  align-self: center;
+
+  @media screen and (max-width: 910px) {
+    width: 700px;
+  }
+
+  @media screen and (min-width: 1300px) {
+    width: 1000px;
+  }
+}
+
+h1 {
+  color: mediumpurple;
+  text-align: center;
+  font-size: 80px;
+  margin: 20px 0;
+}
+
+h2 {
+  color: crimson;
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 700px) {
+  #container {
+    flex-direction: column;
+  }
+
+  .innercontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+form {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 20px;
+
+  button {
+    margin-top: 10px;
+    width: 80%;
+    align-self: center;
+  }
+
+  div {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.workoutResult {
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 190px;
+}
+
+form, .workoutResult {
+  box-shadow: 3px 3px 3px gray;
+}
+
+#addworkout, #updateworkout {
+  input {
+    width: 80px;
+  }
+
+  div:first-child input {
+    width: initial;
+  }
+}
+
+#getworkoutdate div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+}
+
+button {
+  color: whitesmoke;
+  border: none;
+  border-radius: 3px;
+  
+  &.deleteButton {
+    background-color: salmon;
+    position: relative;
+    float: right;
+    bottom: 90px;
+  }
+  
+  &.updateButton {
+    background-color: lightseagreen;
+    position: relative;
+    float: right;
+    bottom: 70px;
+    left: 51px;
+  }
+  
+  &.submitButton {
+    background-color: cadetblue;
+    padding: 3px;
+  }
+  
+  &.cancelButton {
+    background-color: lightsalmon;
+    padding: 3px;
+  }
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes fadeout {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
+#updateformcontainer {
+  background-color: lemonchiffon;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  width: 220px;
+  height: 280px;
+  // display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: saturate(180%) blur(20px);
+
+  #updateid {
+    display: none;
+  }
+
+  h2 {
+    margin: 10px 0 0 0;
+  }
+
+  form {
+    border: none;
+    box-shadow: none;
+    padding-top: 10px;
+    width: initial;
+  }
+}
