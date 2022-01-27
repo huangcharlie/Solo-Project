@@ -16,7 +16,7 @@ const PriorWorkout = props => {
         document.querySelector('#weight3').value = el.weight,
         document.querySelector('#reps3').value = el.reps,
         document.querySelector('#notes3').value = el.notes,
-        document.querySelector('#updateform').style.display = 'block'
+        document.querySelector('#updateformcontainer').style.display = 'block'
       }}>Update</button>
     </div>
   );

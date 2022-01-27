@@ -115,12 +115,12 @@ class App extends Component {
 
   render() {
     return (
-      <div id="container">
+      <div id='container'>
           <div>
             <AddWorkout handleSubmit={this.addWorkout}/>
             <PriorWorkout handleClick={this.deleteWorkout} workouts={this.state.workouts}/>
           </div>
-          <UpdateWorkout handleSubmit={this.updateWorkout}/>
+          <UpdateWorkout handleClick={this.updateWorkout}/>
           <GetWorkoutByType handleSubmit={this.getWorkoutByType} type={this.state.type}/>
           <GetWorkoutByDate handleSubmit={this.getWorkoutByDate} handleClick={this.deleteWorkout} date={this.state.date}/>
       </div>

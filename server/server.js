@@ -6,7 +6,7 @@ const PORT = 3000;
 
 const controller = require('./controller');
 
-app.use(express.json()); // adds body prop on req object so middleware can access it
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/workout', controller.getWorkouts, (req, res) => {

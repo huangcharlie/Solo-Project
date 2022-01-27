@@ -108,11 +108,14 @@ label {
   display: flex;
 } */
 
-.deleteButton {
-  background-color: salmon;
+button {
   color: whitesmoke;
   border: none;
   border-radius: 3px;
+}
+
+.deleteButton {
+  background-color: salmon;
   position: relative;
   float: right;
   bottom: 90px;
@@ -120,37 +123,45 @@ label {
 
 .updateButton {
   background-color: lightseagreen;
-  color: whitesmoke;
-  border: none;
-  border-radius: 3px;
   position: relative;
   float: right;
   bottom: 70px;
   left: 51px;
 }
 
-#updateform {
+.submitButton {
+  background-color: cadetblue;
+  padding: 3px;
+}
+
+.cancelButton {
+  background-color: lightsalmon;
+  padding: 3px;
+}
+
+#updateformcontainer {
   background-color: lemonchiffon;
   border: 1px solid black;
   box-shadow: 3px 3px 3px gray;
   border-radius: 3px;
   position: absolute;
-  display: none;
+  /* display: none; */
   top: 400px;
-  width: 200px;
-  height: 250px;
+  width: 220px;
+  height: 280px;
 }
 
-#updateid {
+#updateformcontainer #updateid {
   display: none;
 }
 
-#updateform form {
+#updateformcontainer form {
   border: none;
   box-shadow: none;
   padding-top: 10px;
+  width: initial;
 }
 
-#updateform h2 {
+#updateformcontainer h2 {
   margin: 10px 0 0 0;
 }

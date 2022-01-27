@@ -15,19 +15,19 @@ const GetWorkoutByDate = props => {
   return(
     <div className='innercontainer'>
       <h2>By Date Range</h2>
-      <form className="form" id='getworkoutdate' onSubmit={e => {
+      <form className='form' id='getworkoutdate' onSubmit={e => {
         e.preventDefault();
         props.handleSubmit(document.querySelector('#startdate').value, document.querySelector('#enddate').value);
       }}>
         <div>
-          <label htmlFor="startdate">Start Date: </label>
-          <input type="date" id="startdate" name="startdate" />
+          <label htmlFor='startdate'>Start Date: </label>
+          <input type='date' id='startdate' name='startdate' />
         </div>
         <div>
-          <label htmlFor="enddate">End Date: </label>
-          <input type="date" id="enddate" name="enddate" />
+          <label htmlFor='enddate'>End Date: </label>
+          <input type='date' id='enddate' name='enddate' />
         </div>
-        <button type="submit" value="submit">Submit</button>
+        <button className='submitButton' type='submit' value='submit'>Submit</button>
       </form>
       <div className='resultsContainer' id='dateFilterResults'>
         {workouts}

@@ -14,20 +14,20 @@ const GetWorkoutByType = props => {
   return(
     <div className='innercontainer'>
       <h2>Workout By Type</h2>
-      <form className="form" id='getworkout' onSubmit={e => {
+      <form className='form' id='getworkout' onSubmit={e => {
         e.preventDefault();
         props.handleSubmit(document.querySelector('#workout2').value);
       }}>
         <div>
-          <label htmlFor="workout2">Workout: </label>
-          <select name="workout2" id="workout2">
-            <option value="Bench">Bench</option>
-            <option value="Deadlift">Deadlift</option>
-            <option value="Squat">Squat</option>
+          <label htmlFor='workout2'>Workout: </label>
+          <select name='workout2' id='workout2'>
+            <option value='Bench'>Bench</option>
+            <option value='Deadlift'>Deadlift</option>
+            <option value='Squat'>Squat</option>
           </select>
         </div>
 
-        <button type="submit" value="submit">Submit</button>
+        <button className='submitButton' type='submit' value='submit'>Submit</button>
       </form>
       <div className='resultsContainer'>
         {workouts}

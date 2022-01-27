@@ -73,30 +73,4 @@ controller.filtertWorkouts = (req, res, next) => {
       }));
   };
 
-// ADD MIDDLEWARE TO REMOVE A CHARACTER FROM FAVORITES HERE
-// controller.removeFav = (req, res, next) => {
-//   if(!Object.prototype.hasOwnProperty.call(res.locals, 'favs')) {
-//     return next({
-//       log: 'controller.removeFav: ERROR: Invalid or unfound required data on res.locals object - Expected res.locals.favs to be an object.',
-//       message: { err: 'controller.removeFav: ERROR: Check server logs for details' },
-//     });
-//   }
-  
-//   const data = res.locals.favs;
-//   delete data[req.params.id];
-//   const jsonData = JSON.stringify(data);
-
-//   fs.writeFile(path.resolve(__dirname, '../data/favs.json'), jsonData,
-//     (err) => {
-//       if (err) {
-//         return next({
-//           log: `controller.removeFav: ERROR: ${typeof err === 'object' ? JSON.stringify(err) : err}`,
-//           message: { err: 'controller.removeFav: ERROR: Check server logs for details' },
-//         });
-//       }
-//       return next();
-//     },
-//   );
-// };
-
 module.exports = controller;
