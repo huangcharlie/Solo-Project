@@ -29,6 +29,20 @@ controller.addWorkout = (req, res, next) => {
     }));
 };
 
+controller.updateWorkout = (req, res, next) => {
+  const { _id, date, workout, weight, reps, notes } = req.body;
+  const params = [ _id, date, workout, weight, reps, notes ];
+  const stringSQL = 'UPDATE workouts SET date = $2, workout = $3, weight = $4, reps = $5, notes = $6 WHERE _id = $1';
+  db.query(stringSQL, params)
+    .then(data => {
+      return next();
+    })
+    .catch(err => next({
+      log: `controller.updateWorkout: ERROR: ${err}`,
+      message: { err: 'Error occurred in controller.updateWorkout. Check server logs for more details.' },
+    }));
+};
+
 controller.removeWorkout = (req, res, next) => {
     const { _id } = req.params;
     const params = [ _id ];

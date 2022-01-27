@@ -9,11 +9,20 @@ const PriorWorkout = props => {
       <b>Reps: </b>{el.reps}<br></br>
       <b>Notes: </b>{el.notes}<br></br>
       <button className='deleteButton' onClick={() => props.handleClick(el._id)}>Delete</button>
+      <button className='updateButton' onClick={() => {
+        document.querySelector('#updateid').value = el._id,
+        document.querySelector('#date3').value = el.date.split('T')[0],
+        document.querySelector('#workout3').value = el.workout,
+        document.querySelector('#weight3').value = el.weight,
+        document.querySelector('#reps3').value = el.reps,
+        document.querySelector('#notes3').value = el.notes,
+        document.querySelector('#updateform').style.display = 'block'
+      }}>Update</button>
     </div>
   );
 
   return(
-    <div >
+    <div className='innercontainer'>
       <h2>Prior 5 Workouts</h2>
       <div className='resultsContainer'>
         {workouts.slice(0, 5)}

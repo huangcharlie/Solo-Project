@@ -13,7 +13,7 @@ const GetWorkoutByDate = props => {
   );
 
   return(
-    <div >
+    <div className='innercontainer'>
       <h2>By Date Range</h2>
       <form className="form" id='getworkoutdate' onSubmit={e => {
         e.preventDefault();

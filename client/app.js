@@ -4,6 +4,7 @@ import AddWorkout from './components/AddWorkout';
 import PriorWorkout from './components/PriorWorkout';
 import GetWorkoutByType from './components/GetWorkoutByType';
 import GetWorkoutByDate from './components/GetWorkoutByDate';
+import UpdateWorkout from './components/UpdateWorkout';
 import styles from './style.css';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
     this.getWorkoutByType = this.getWorkoutByType.bind(this);
     this.getWorkoutByDate = this.getWorkoutByDate.bind(this);
     this.deleteWorkout = this.deleteWorkout.bind(this);
+    this.updateWorkout = this.updateWorkout.bind(this);
   }
   
   componentDidMount() {
@@ -93,6 +95,24 @@ class App extends Component {
       .catch(err => console.log('app.js METHOD: deleteWorkout: ERROR: ', err));
   }
 
+  updateWorkout(data) {
+    fetch('/workout', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json())
+      .then(workouts => {
+        return this.setState({
+          ...this.state,
+          workouts
+        });
+      })
+      .catch(err => console.log('app.js METHOD: updateWorkout: ERROR: ', err));
+  }
+
   render() {
     return (
       <div id="container">
@@ -100,8 +120,9 @@ class App extends Component {
             <AddWorkout handleSubmit={this.addWorkout}/>
             <PriorWorkout handleClick={this.deleteWorkout} workouts={this.state.workouts}/>
           </div>
-        <GetWorkoutByType handleSubmit={this.getWorkoutByType} type={this.state.type}/>
-        <GetWorkoutByDate handleSubmit={this.getWorkoutByDate} handleClick={this.deleteWorkout} date={this.state.date}/>
+          <UpdateWorkout handleSubmit={this.updateWorkout}/>
+          <GetWorkoutByType handleSubmit={this.getWorkoutByType} type={this.state.type}/>
+          <GetWorkoutByDate handleSubmit={this.getWorkoutByDate} handleClick={this.deleteWorkout} date={this.state.date}/>
       </div>
     );
   }

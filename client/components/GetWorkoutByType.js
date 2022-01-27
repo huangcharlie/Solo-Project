@@ -12,7 +12,7 @@ const GetWorkoutByType = props => {
   );
 
   return(
-    <div >
+    <div className='innercontainer'>
       <h2>Workout By Type</h2>
       <form className="form" id='getworkout' onSubmit={e => {
         e.preventDefault();

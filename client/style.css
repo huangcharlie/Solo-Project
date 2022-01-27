@@ -1,12 +1,31 @@
 body {
   background-color: aliceblue;
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  width: 80%;
+  align-self: center;
+}
+
+@media screen and (min-width: 1300px) {
+  #root {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  #root {
+    width: 700px;
+  }
 }
 
 h1 {
   color: mediumpurple;
   text-align: center;
-  font-size: 50px;
+  font-size: 80px;
+  margin: 20px 0;
 }
 
 h2 {
@@ -19,9 +38,20 @@ h2 {
   justify-content: space-evenly;
 }
 
+@media screen and (max-width: 700px) {
+  #container {
+    flex-direction: column;
+  }
+
+  .innercontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .form {
   width: 160px;
-  /* background-color: green; */
   display: flex;
   flex-direction: column;
   border: 1px solid black;
@@ -41,11 +71,11 @@ h2 {
   justify-content: space-between;
 }
 
-#addworkout input {
+#addworkout input, #updateworkout input {
   width: 80px;
 }
 
-#addworkout div:first-child input {
+#addworkout div:first-child input, #updateworkout div:first-child input {
   width: initial;
 }
 
@@ -67,6 +97,11 @@ label {
   padding: 5px;
   border: 1px solid black;
   border-radius: 3px;
+  width: 190px;
+}
+
+.form, .workoutResult {
+  box-shadow: 3px 3px 3px gray;
 }
 
 /* #dateFilterResults {
@@ -81,4 +116,41 @@ label {
   position: relative;
   float: right;
   bottom: 90px;
+}
+
+.updateButton {
+  background-color: lightseagreen;
+  color: whitesmoke;
+  border: none;
+  border-radius: 3px;
+  position: relative;
+  float: right;
+  bottom: 70px;
+  left: 51px;
+}
+
+#updateform {
+  background-color: lemonchiffon;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px gray;
+  border-radius: 3px;
+  position: absolute;
+  display: none;
+  top: 400px;
+  width: 200px;
+  height: 250px;
+}
+
+#updateid {
+  display: none;
+}
+
+#updateform form {
+  border: none;
+  box-shadow: none;
+  padding-top: 10px;
+}
+
+#updateform h2 {
+  margin: 10px 0 0 0;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AddWorkout = props => (
-  <div >
+  <div className='innercontainer'>
     <h2>Add Workout</h2>
     <form className="form" id='addworkout' onSubmit={e => {
       e.preventDefault();
@@ -17,10 +17,7 @@ const AddWorkout = props => (
       document.querySelector('#notes').value = '';
     }}>
       <div>
-        {/* <label for="date">Date: </label> */}
-        <input type="date" id="date" name="date"
-          // value={new Date().toLocaleDateString("sv")}
-           />
+        <input type="date" id="date" name="date" />
       </div>
 
       <div>
