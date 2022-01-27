@@ -7,7 +7,8 @@ const PriorWorkout = props => {
       <b>Workout: </b>{el.workout}<br></br>
       <b>Weight: </b>{el.weight} lbs<br></br>
       <b>Reps: </b>{el.reps}<br></br>
-      <b>Notes: </b>{el.notes}
+      <b>Notes: </b>{el.notes}<br></br>
+      <button className='deleteButton' onClick={() => props.handleClick(el._id)}>Delete</button>
     </div>
   );
 

@@ -17,6 +17,10 @@ app.post('/workout', controller.addWorkout, controller.getWorkouts, (req, res) =
   return res.status(200).json(res.locals.workouts);
 })
 
+app.delete('/workout/:_id', controller.removeWorkout, controller.getWorkouts, (req, res) => {
+  return res.status(200).json(res.locals.workouts);
+})
+
 app.post('/filterworkout', controller.filtertWorkouts, (req, res) => {
   return res.status(200).json(res.locals.workouts);
 })

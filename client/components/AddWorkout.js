@@ -24,7 +24,7 @@ const AddWorkout = props => (
       </div>
 
       <div>
-        <label for="workout">Workout: </label>
+        <label htmlFor="workout">Workout: </label>
         <select name="workout" id="workout">
           <option value="Bench">Bench</option>
           <option value="Deadlift">Deadlift</option>
@@ -33,17 +33,17 @@ const AddWorkout = props => (
       </div>
 
       <div>
-        <label for="weight">Weight: </label>
+        <label htmlFor="weight">Weight: </label>
         <input type="text" id="weight" name="weight" required />
       </div>
 
       <div>
-        <label for="reps">Reps: </label>
+        <label htmlFor="reps">Reps: </label>
         <input type="text" id="reps" name="reps" required />
       </div>
 
       <div>
-        <label for="notes">Notes: </label>
+        <label htmlFor="notes">Notes: </label>
         <input type="text" id="notes" name="notes" />
       </div>
 

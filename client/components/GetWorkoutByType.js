@@ -19,7 +19,7 @@ const GetWorkoutByType = props => {
         props.handleSubmit(document.querySelector('#workout2').value);
       }}>
         <div>
-          <label for="workout2">Workout: </label>
+          <label htmlFor="workout2">Workout: </label>
           <select name="workout2" id="workout2">
             <option value="Bench">Bench</option>
             <option value="Deadlift">Deadlift</option>

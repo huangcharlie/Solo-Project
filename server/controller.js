@@ -6,7 +6,6 @@ controller.getWorkouts = (req, res, next) => {
   const stringSQL = 'SELECT * FROM workouts ORDER BY date DESC, workout, _id DESC';
   db.query(stringSQL)
     .then(data => {
-    //   console.log(data);
       res.locals.workouts = data.rows;
       return next();
     })
@@ -22,8 +21,6 @@ controller.addWorkout = (req, res, next) => {
   const stringSQL = 'INSERT INTO workouts (date, workout, weight, reps, notes) VALUES ($1,$2,$3,$4,$5)';
   db.query(stringSQL, params)
     .then(data => {
-    //   console.log(data);
-      // res.locals.addedCharacter = data.rows[0];
       return next();
     })
     .catch(err => next({
@@ -32,6 +29,20 @@ controller.addWorkout = (req, res, next) => {
     }));
 };
 
+controller.removeWorkout = (req, res, next) => {
+    const { _id } = req.params;
+    const params = [ _id ];
+    const stringSQL = 'DELETE FROM workouts WHERE _id=$1';
+    db.query(stringSQL, params)
+      .then(data => {
+        return next();
+      })
+      .catch(err => next({
+        log: `controller.removeWorkout: ERROR: ${err}`,
+        message: { err: 'Error occurred in controller.removeWorkout. Check server logs for more details.' },
+      }));
+  };
+
 controller.filtertWorkouts = (req, res, next) => {
     const startdate = req.body.startdate || '2022-01-01';
     const enddate = req.body.enddate || new Date().toLocaleDateString("sv");
@@ -39,7 +50,6 @@ controller.filtertWorkouts = (req, res, next) => {
     const stringSQL = 'SELECT * FROM workouts WHERE date BETWEEN $1 AND $2 ORDER BY date, workout;';
     db.query(stringSQL, params)
       .then(data => {
-      //   console.log(data);
         res.locals.workouts = data.rows;
         return next();
       })

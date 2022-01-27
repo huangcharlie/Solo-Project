@@ -58,9 +58,9 @@ label {
   font-weight: bold;
 }
 
-.resultsContainer {
-  /* background-color: green; */
-}
+/* .resultsContainer {
+  background-color: green;
+} */
 
 .workoutResult {
   margin: 10px 0;
@@ -72,3 +72,13 @@ label {
 /* #dateFilterResults {
   display: flex;
 } */
+
+.deleteButton {
+  background-color: salmon;
+  color: whitesmoke;
+  border: none;
+  border-radius: 3px;
+  position: relative;
+  float: right;
+  bottom: 90px;
+}

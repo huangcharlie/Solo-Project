@@ -7,7 +7,8 @@ const GetWorkoutByDate = props => {
       <b>Workout: </b> {el.workout}<br></br>
       <b>Weight: </b> {el.weight} lbs<br></br>
       <b>Reps: </b>{el.reps}<br></br>
-      <b>Notes: </b>{el.notes}
+      <b>Notes: </b>{el.notes}<br></br>
+      <button className='deleteButton' onClick={() => props.handleClick(el._id)}>Delete</button>
     </div>
   );
 
@@ -19,11 +20,11 @@ const GetWorkoutByDate = props => {
         props.handleSubmit(document.querySelector('#startdate').value, document.querySelector('#enddate').value);
       }}>
         <div>
-          <label for="startdate">Start Date: </label>
+          <label htmlFor="startdate">Start Date: </label>
           <input type="date" id="startdate" name="startdate" />
         </div>
         <div>
-          <label for="enddate">End Date: </label>
+          <label htmlFor="enddate">End Date: </label>
           <input type="date" id="enddate" name="enddate" />
         </div>
         <button type="submit" value="submit">Submit</button>

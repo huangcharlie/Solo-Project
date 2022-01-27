@@ -19,6 +19,7 @@ class App extends Component {
     this.addWorkout = this.addWorkout.bind(this);
     this.getWorkoutByType = this.getWorkoutByType.bind(this);
     this.getWorkoutByDate = this.getWorkoutByDate.bind(this);
+    this.deleteWorkout = this.deleteWorkout.bind(this);
   }
   
   componentDidMount() {
@@ -49,7 +50,7 @@ class App extends Component {
           workouts
         });
       })
-      .catch(err => console.log('addWorkout: ERROR: ', err));
+      .catch(err => console.log('app.js METHOD: addWorkout: ERROR: ', err));
   }
 
   getWorkoutByType(workout) {
@@ -75,13 +76,21 @@ class App extends Component {
           date
         });
       })
-      .catch(err => console.log('getWorkoutByDate: ERROR: ', err));
-    
-    // const date = this.state.workouts.filter(el => el.date.split('T')[0] === startdate);
-    // return this.setState({
-    //   ...this.state,
-    //   date,
-    // })
+      .catch(err => console.log('app.js METHOD: getWorkoutByDate: ERROR: ', err));
+  }
+
+  deleteWorkout(_id) {
+    fetch('/workout/' + _id, {
+        method: 'DELETE'
+      })
+      .then(res => res.json())
+      .then(workouts => {
+        return this.setState({
+          ...this.state,
+          workouts
+        });
+      })
+      .catch(err => console.log('app.js METHOD: deleteWorkout: ERROR: ', err));
   }
 
   render() {
@@ -89,10 +98,10 @@ class App extends Component {
       <div id="container">
           <div>
             <AddWorkout handleSubmit={this.addWorkout}/>
-            <PriorWorkout workouts={this.state.workouts}/>
+            <PriorWorkout handleClick={this.deleteWorkout} workouts={this.state.workouts}/>
           </div>
         <GetWorkoutByType handleSubmit={this.getWorkoutByType} type={this.state.type}/>
-        <GetWorkoutByDate handleSubmit={this.getWorkoutByDate} date={this.state.date}/>
+        <GetWorkoutByDate handleSubmit={this.getWorkoutByDate} handleClick={this.deleteWorkout} date={this.state.date}/>
       </div>
     );
   }
