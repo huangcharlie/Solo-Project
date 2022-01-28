@@ -13,7 +13,6 @@ const PriorWorkout = props => {
         <b>Reps: </b>{reps}<br></br>
         <b>Notes: </b>{notes}<br></br>
         <button className='deleteButton' onClick={() => props.handleClick(_id)}>Delete</button>
-        {/* <UpdateButton _id={_id} date={date} workout={workout} weight={weight} reps={reps} notes={notes} /> */}
         <UpdateButton {...props} />
       </div>
     )

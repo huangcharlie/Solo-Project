@@ -30,7 +30,7 @@ const GetWorkoutByType = props => {
         <button className='submitButton' type='submit' value='submit'>Submit</button>
       </form>
       <div className='resultsContainer'>
-        {workouts}
+        {workouts.slice(0, 10)}
       </div>
     </div>
   );

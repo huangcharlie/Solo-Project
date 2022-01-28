@@ -8,7 +8,7 @@ const UpdateButton = props => (
     document.querySelector('#weight3').value = props.weight;
     document.querySelector('#reps3').value = props.reps;
     document.querySelector('#notes3').value = props.notes;
-    document.querySelector('#updateformcontainer').style.animation='fadein 500ms linear';
+    document.querySelector('#updateformcontainer').style.animation='fadein 200ms linear';
     document.querySelector('#updateformcontainer').style.display = 'block';
   }}>Update</button>
 );

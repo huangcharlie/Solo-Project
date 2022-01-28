@@ -3,7 +3,7 @@ const db = require('./workoutModels');
 const controller = {};
 
 controller.getWorkouts = (req, res, next) => {
-  const stringSQL = 'SELECT * FROM workouts ORDER BY date DESC, workout, _id DESC';
+  const stringSQL = 'SELECT * FROM workouts ORDER BY date DESC, workout, weight DESC';
   db.query(stringSQL)
     .then(data => {
       res.locals.workouts = data.rows;
@@ -61,7 +61,7 @@ controller.filtertWorkouts = (req, res, next) => {
     const startdate = req.body.startdate || '2022-01-01';
     const enddate = req.body.enddate || new Date().toLocaleDateString("sv");
     params = [ startdate, enddate ];
-    const stringSQL = 'SELECT * FROM workouts WHERE date BETWEEN $1 AND $2 ORDER BY date, workout;';
+    const stringSQL = 'SELECT * FROM workouts WHERE date BETWEEN $1 AND $2 ORDER BY date, workout, weight DESC;';
     db.query(stringSQL, params)
       .then(data => {
         res.locals.workouts = data.rows;
