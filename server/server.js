@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+const workoutRouter = require('./workoutRouter');
 const controller = require('./controller');
 
 // handle parsing request body
@@ -11,21 +12,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // app route handlers
-app.get('/workout', controller.getWorkouts, (req, res) => {
-  return res.status(200).json(res.locals.workouts);
-})
+app.use('/workout', workoutRouter);
 
-app.post('/workout', controller.addWorkout, controller.getWorkouts, (req, res) => {
-  return res.status(200).json(res.locals.workouts);
-})
+// app.get('/workout', controller.getWorkouts, (req, res) => {
+//   return res.status(200).json(res.locals.workouts);
+// })
 
-app.put('/workout', controller.updateWorkout, controller.getWorkouts, (req, res) => {
-  return res.status(200).json(res.locals.workouts);
-})
+// app.post('/workout', controller.addWorkout, controller.getWorkouts, (req, res) => {
+//   return res.status(200).json(res.locals.workouts);
+// })
 
-app.delete('/workout/:_id', controller.removeWorkout, controller.getWorkouts, (req, res) => {
-  return res.status(200).json(res.locals.workouts);
-})
+// app.put('/workout', controller.updateWorkout, controller.getWorkouts, (req, res) => {
+//   return res.status(200).json(res.locals.workouts);
+// })
+
+// app.delete('/workout/:_id', controller.removeWorkout, controller.getWorkouts, (req, res) => {
+//   return res.status(200).json(res.locals.workouts);
+// })
 
 app.post('/filterworkout', controller.filtertWorkouts, (req, res) => {
   return res.status(200).json(res.locals.workouts);
