@@ -117,7 +117,7 @@ class App extends Component {
           <div>
             <AddWorkout handleSubmit={this.addWorkout}/>
             <PriorWorkout handleClick={this.deleteWorkout} workouts={this.state.workouts}/>
-            <UpdateWorkout handleClick={this.updateWorkout}/>
+            <UpdateWorkout handleSubmit={this.updateWorkout}/>
           </div>
           <GetWorkoutByType handleSubmit={this.getWorkoutByType} type={this.state.type}/>
           <GetWorkoutByDate handleSubmit={this.getWorkoutByDate} handleClick={this.deleteWorkout} date={this.state.date}/>

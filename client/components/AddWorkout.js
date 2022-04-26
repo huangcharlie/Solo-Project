@@ -6,11 +6,11 @@ const AddWorkout = props => (
     <form className='form' id='addworkout' onSubmit={e => {
       e.preventDefault();
       props.handleSubmit({
-        date: document.querySelector('#date').value,
-        workout: document.querySelector('#workout').value,
-        weight: document.querySelector('#weight').value,
-        reps: document.querySelector('#reps').value,
-        notes: document.querySelector('#notes').value,
+        date: e.target[0].value,
+        workout: e.target[1].value,
+        weight: e.target[2].value,
+        reps: e.target[3].value,
+        notes: e.target[4].value,
       });
       document.querySelector('#weight').value = '';
       document.querySelector('#reps').value = '';

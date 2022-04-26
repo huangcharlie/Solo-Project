@@ -3,7 +3,19 @@ import React from 'react';
 const UpdateWorkout = props => (
   <div className='innercontainer' id='updateformcontainer'>
     <h2>Update Workout</h2>
-    <form className="form" id='updateworkout'>
+    <form className="form" id='updateworkout' onSubmit={(e) => {
+        e.preventDefault();
+        document.querySelector('#updateformcontainer').style.animation='fadeout 200ms linear';
+        setTimeout(() => document.querySelector('#updateformcontainer').style.display='none', 200);
+        props.handleSubmit({
+          _id: e.target[0].value,
+          date: e.target[1].value,
+          workout: e.target[2].value,
+          weight: e.target[3].value,
+          reps: e.target[4].value,
+          notes: e.target[5].value,
+        });
+      }}>
       <div>
         <input type='text' id='updateid' name='updateid' required />
         <input type='date' id='date3' name='date3' />
@@ -33,19 +45,7 @@ const UpdateWorkout = props => (
         <input type='text' id='notes3' name='notes3' />
       </div>
 
-      <button className='submitButton' onClick={(e) => {
-        e.preventDefault();
-        document.querySelector('#updateformcontainer').style.animation='fadeout 200ms linear';
-        setTimeout(() => document.querySelector('#updateformcontainer').style.display='none', 200);
-        props.handleClick({
-          _id: document.querySelector('#updateid').value,
-          date: document.querySelector('#date3').value,
-          workout: document.querySelector('#workout3').value,
-          weight: document.querySelector('#weight3').value,
-          reps: document.querySelector('#reps3').value,
-          notes: document.querySelector('#notes3').value,
-        });
-      }}>Submit</button>
+      <button className='submitButton' type='submit' value='submit'>Submit</button>
 
       <button className='cancelButton' onClick={(e) => {
         e.preventDefault();
